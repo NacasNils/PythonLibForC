@@ -8,13 +8,13 @@ DESCRIPTION = 'Streaming video data via networks'
 
 # Setting up
 setup(
-    name="vidstream",
+    name="PyAccel",
     version=VERSION,
     author="Nils Lyrevik",
     author_email="guslyrni@student.gu.se",
     description=DESCRIPTION,
     packages=find_packages(),
-    install_requires=['opencv-python', 'pyautogui', 'pyaudio'],
+    install_requires=['numpy'],
     keywords=['python', 'c-code', 'c', 'cuda', 'Nvidia', 'GPU'],
     classifiers=[
         "Development Status :: 1 - Planning",

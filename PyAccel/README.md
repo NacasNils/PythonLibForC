@@ -1,2 +1,1 @@
-# Python library for accelerated line detection using cuda
-Made for my bachelors thesis.
+# THIS IS A TEST FOR PYTHON LIBRARY MAKING

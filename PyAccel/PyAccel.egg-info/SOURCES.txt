@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+PyAccel/HelloWorld.py
+PyAccel/__init__.py
+PyAccel.egg-info/PKG-INFO
+PyAccel.egg-info/SOURCES.txt
+PyAccel.egg-info/dependency_links.txt
+PyAccel.egg-info/requires.txt
+PyAccel.egg-info/top_level.txt
