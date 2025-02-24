@@ -1,1 +1,0 @@
-Func :: image-dir -> dir -> line-length
