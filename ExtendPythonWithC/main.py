@@ -12,5 +12,9 @@ result = myC.remove_color(filename_bytes, mode)
 
 if result == 1:
     print("Success!")
+elif result == 2:
+    print("wrong number input")
+elif result == -1:
+    print("input .png is NULL")
 else:
-    print("failed somewhere in c-code...")
+    print("output .png is NULL (really strange should never happen.)")

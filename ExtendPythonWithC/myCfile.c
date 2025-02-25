@@ -6,9 +6,13 @@
 #include "stb_image/stb_image.h"
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image/stb_image_write.h"
+
+// Macros's for rgb
 #define RED 0
 #define GREEN 1
 #define BLUE 2
+
+// helpter methods to remove_color( ... )
 int remove_all(int width, int height, int channels, unsigned char *img);
 int remove_rgb(int width, int height, int channels, unsigned char *img,int color);
 
