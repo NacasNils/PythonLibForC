@@ -13,11 +13,11 @@
 #define BLUE 2
 
 // helpter methods to remove_color( ... )
-int remove_all(int width, int height, int channels, unsigned char *img);
-int remove_rgb(int width, int height, int channels, unsigned char *img,int color);
+int remove_all(int width, int height, int channels, unsigned char *img, const char *o_dir);
+int remove_rgb(int width, int height, int channels, unsigned char *img,int color, const char *o_dir);
 
 
-int remove_color(const char *input, int mode){
+int remove_color(const char *input, int mode, const char *o_dir){
   int width,height,channels;
   unsigned char *img = stbi_load(input, &width, &height, &channels, 0);
 
@@ -26,21 +26,21 @@ int remove_color(const char *input, int mode){
     return -1;
   }
   if(mode == 0){
-    return remove_all(width,height,channels,img);
+    return remove_all(width,height,channels,img, o_dir);
   }
   if(mode == 1){
-    return remove_rgb(width,height,channels,img, RED);
+    return remove_rgb(width,height,channels,img, RED, o_dir);
   }
   if (mode == 2){
-    return remove_rgb(width, height, channels, img, GREEN);
+    return remove_rgb(width, height, channels, img, GREEN, o_dir);
   }
   if(mode == 3){
-    return remove_rgb(width,height, channels, img, BLUE);
+    return remove_rgb(width,height, channels, img, BLUE, o_dir);
   }
   return 2;
 }
 
-int remove_all(int width, int height, int channels, unsigned char *img){
+int remove_all(int width, int height, int channels, unsigned char *img, const char *o_dir){
 
   size_t img_size = width * height * channels;
   int gray_channels = channels == 4 ? 2 : 1;
@@ -57,7 +57,9 @@ int remove_all(int width, int height, int channels, unsigned char *img){
     if(channels == 4){
       *(pg + 1) = *(p + 3); }
   }
-  stbi_write_png("./out_gray.png", width, height, gray_channels, gray_img, width * gray_channels);
+  char output[256];
+  sprintf(output, "./%s/out_gray.png", o_dir);
+  stbi_write_png(output, width, height, gray_channels, gray_img, width * gray_channels);
   
   
   stbi_image_free;
@@ -65,7 +67,7 @@ int remove_all(int width, int height, int channels, unsigned char *img){
   return 1;
 }
 
-int remove_rgb(int width, int height, int channels, unsigned char *img, int color){
+int remove_rgb(int width, int height, int channels, unsigned char *img, int color, const char *o_dir){
   size_t img_size = width * height * channels;
   size_t red_img_size = width * height * channels;
 
@@ -80,9 +82,10 @@ for (unsigned char *p = img, *pr = red_img; p != img + img_size; p += channels, 
 
     // Set red channel to 0
     pr[color] = 0;
-}
-
-  stbi_write_png("./out_rgb.png", width, height, channels, red_img, width*channels);
+} 
+  char output[256];
+  sprintf(output, "./%s/out_rgb.png", o_dir);
+  stbi_write_png(output, width, height, channels, red_img, width*channels);
   stbi_image_free;
   free(red_img);
   return 1;
