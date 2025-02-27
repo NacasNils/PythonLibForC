@@ -1,6 +1,7 @@
-import ctypes
+import ctypes  # .dll for WINDOWS
 
-myC = ctypes.CDLL("./myCfile.so")  # .dll for WINDOWS
+myC = ctypes.CDLL("./myCfile.so")
+
 myC.remove_color.argtypes = [ctypes.c_char_p, ctypes.c_int]
 
 filename = input("please enter filename: ")

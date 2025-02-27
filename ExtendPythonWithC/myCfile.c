@@ -29,7 +29,7 @@ int remove_color(const char *input, int mode){
     return remove_all(width,height,channels,img);
   }
   if(mode == 1){
-    return remove_rgb(width,height,channels,img,RED);
+    return remove_rgb(width,height,channels,img, RED);
   }
   if (mode == 2){
     return remove_rgb(width, height, channels, img, GREEN);
@@ -55,8 +55,7 @@ int remove_all(int width, int height, int channels, unsigned char *img){
   for (unsigned char *p = img, *pg = gray_img; p != img + img_size; p += channels, pg += gray_channels){
     *pg = (uint8_t)((*p + *(p + 1) + *(p + 2))/3);
     if(channels == 4){
-      *(pg + 1) = *(p + 3);
-    }
+      *(pg + 1) = *(p + 3); }
   }
   stbi_write_png("./out_gray.png", width, height, gray_channels, gray_img, width * gray_channels);
   
